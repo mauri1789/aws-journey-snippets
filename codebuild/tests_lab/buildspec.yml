@@ -3,17 +3,25 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto11
+      nodejs: 12.x
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - npm install
   build:
     commands:
-      - echo Build started on `date`
-      - mvn install
+      - npm run build
+      - npm test
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo Finished build process
+
 artifacts:
   files:
-    - target/messageUtil-1.0.jar
+    - lib/*
+
+reports:
+  jest_reports:
+    files:
+      - tests.xml
+    file-format: JUNITXML
+    base-directory: jest_results
