@@ -1,2 +1,5 @@
 node_modules
 lib
+jest_results
+.DS_Store
+application.zip
